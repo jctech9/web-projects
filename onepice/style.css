@@ -1,0 +1,61 @@
+body{
+    background-color: black;
+}
+
+h1{
+    color: white;
+    margin-top: 0;
+}
+
+h2{
+    color: white;
+}
+
+.title{
+    background-color: rgb(68, 68, 68);
+    margin-bottom: 20px; 
+}
+
+p{
+    color: white;
+}
+
+img{
+    width: 60%;
+    float: left;
+    margin: 2%;
+}
+
+.box{
+    width: 45%;
+    display: inline-block;
+    margin: 2%;
+}
+
+.left{
+    float: right;
+}
+
+.right{
+    float: left;
+}
+
+@media (max-width: 680px){
+    .box{
+        display: block; 
+        float: none;
+        width: 100%;
+    }
+
+    img{
+        width: 100%;
+        float: left;
+        margin: 2%;
+    }
+
+    h2{
+        color: white;
+        text-align: center;
+    }
+    
+}
