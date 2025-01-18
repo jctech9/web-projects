@@ -1,0 +1,24 @@
+body{
+    background-color: #1D1616;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows:  1fr 1fr;
+    gap: 10px;
+}
+
+.box{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+img{
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    border: solid #525252;
+}
