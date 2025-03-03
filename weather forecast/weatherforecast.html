@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #246fa8;
+        }
+        
+        .search {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #246fa8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1d5a86;
+        }
+        
+        .weather {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .weather-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        
+        .temperature {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .description {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .detail-value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        
+        .error {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Previsão do Tempo</h1>
+        
+        <div class="search">
+            <button id="get-location">Usar Minha Localização</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <p>Carregando dados do clima...</p>
+        </div>
+        
+        <div class="error" id="error">
+            <p>Não foi possível obter os dados do clima. Tente novamente.</p>
+        </div>
+        
+        <div class="weather" id="weather">
+            <div class="weather-icon">
+                <img id="weather-img" src="/api/placeholder/100/100" alt="Ícone do clima">
+            </div>
+            <div class="temperature" id="temperature">--°C</div>
+            <div class="description" id="description">--</div>
+            <div class="location" id="location">--</div>
+            
+            <div class="details">
+                <div class="detail">
+                    <div>Sensação</div>
+                    <div class="detail-value" id="feels-like">--°C</div>
+                </div>
+                <div class="detail">
+                    <div>Umidade</div>
+                    <div class="detail-value" id="humidity">--%</div>
+                </div>
+                <div class="detail">
+                    <div>Vento</div>
+                    <div class="detail-value" id="wind">-- km/h</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const weatherElem = document.getElementById('weather');
+            const loadingElem = document.getElementById('loading');
+            const errorElem = document.getElementById('error');
+            const locationButton = document.getElementById('get-location');
+            
+            // OpenWeatherMap API Key (substitua por sua chave)
+            const apiKey = 'INSIRA_SUA_CHAVE_DA_API_AQUI';
+            
+            locationButton.addEventListener('click', () => {
+                getLocation();
+            });
+            
+            function getLocation() {
+                if (navigator.geolocation) {
+                    // Mostrar loading e esconder outros elementos
+                    weatherElem.style.display = 'none';
+                    loadingElem.style.display = 'block';
+                    errorElem.style.display = 'none';
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        position => {
+                            const lat = position.coords.latitude;
+                            const lon = position.coords.longitude;
+                            getWeather(lat, lon);
+                        },
+                        error => {
+                            console.error("Erro ao obter localização:", error);
+                            showError();
+                        }
+                    );
+                } else {
+                    showError("Geolocalização não é suportada pelo seu navegador.");
+                }
+            }
+            
+            function getWeather(lat, lon) {
+                // URL da API do OpenWeatherMap
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&appid=${apiKey}`;
+                
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Resposta da rede não foi ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        displayWeather(data);
+                    })
+                    .catch(error => {
+                        console.error("Erro ao buscar dados do clima:", error);
+                        showError();
+                    });
+            }
+            
+            function displayWeather(data) {
+                // Esconder loading e mostrar resultado
+                loadingElem.style.display = 'none';
+                weatherElem.style.display = 'block';
+                
+                // Atualizar elementos na página
+                document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°C`;
+                document.getElementById('description').textContent = data.weather[0].description;
+                document.getElementById('location').textContent = `${data.name}, ${data.sys.country}`;
+                document.getElementById('feels-like').textContent = `${Math.round(data.main.feels_like)}°C`;
+                document.getElementById('humidity').textContent = `${data.main.humidity}%`;
+                document.getElementById('wind').textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
+                
+                // Atualizar ícone do clima
+                const iconCode = data.weather[0].icon;
+                document.getElementById('weather-img').src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+                
+                // Mudança de cor de fundo com base na temperatura
+                const temp = data.main.temp;
+                let bgColor;
+                
+                if (temp < 5) {
+                    bgColor = 'linear-gradient(to bottom, #b3e0ff 0%, #0066cc 100%)'; // Muito frio
+                } else if (temp < 15) {
+                    bgColor = 'linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%)'; // Frio
+                } else if (temp < 25) {
+                    bgColor = 'linear-gradient(to bottom, #ffd86f 0%, #ff9966 100%)'; // Ameno
+                } else {
+                    bgColor = 'linear-gradient(to bottom, #ff9966 0%, #ff5e62 100%)'; // Quente
+                }
+                
+                document.body.style.background = bgColor;
+            }
+            
+            function showError(message = "Não foi possível obter os dados do clima. Tente novamente.") {
+                loadingElem.style.display = 'none';
+                weatherElem.style.display = 'none';
+                errorElem.style.display = 'block';
+                errorElem.firstElementChild.textContent = message;
+            }
+        });
+    </script>
+</body>
+</html>
