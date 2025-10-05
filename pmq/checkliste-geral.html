@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Concursos Públicos </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .checklist-item:hover {
+            background: #f5f5f5;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 12px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .tips {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .tips h2 {
+            color: #f57c00;
+            margin-bottom: 15px;
+        }
+
+        .tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .tips li:before {
+            content: "✓ ";
+            color: #ffc107;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧾 CHECKLIST GERAL – CONCURSOS PÚBLICOS</h1>
+        <p class="subtitle"> Níveis Fundamental e Médio</p>
+
+        <div class="section">
+            <h2>📘 LÍNGUA PORTUGUESA</h2>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp1">
+                <label for="lp1">Leitura, compreensão e interpretação de textos</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp2">
+                <label for="lp2">Ortografia oficial e acentuação gráfica</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp3">
+                <label for="lp3">Pontuação e crase</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp4">
+                <label for="lp4">Emprego de pronomes, conjunções e preposições</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp5">
+                <label for="lp5">Classes gramaticais (substantivo, adjetivo, verbo, advérbio etc.)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp6">
+                <label for="lp6">Concordância verbal e nominal</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp7">
+                <label for="lp7">Regência verbal e nominal</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp8">
+                <label for="lp8">Formação e significação de palavras</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp9">
+                <label for="lp9">Figuras de linguagem</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="lp10">
+                <label for="lp10">Redação oficial e coesão textual (nível médio com mais ênfase)</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧮 MATEMÁTICA / RACIOCÍNIO LÓGICO</h2>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat1">
+                <label for="mat1">Quatro operações fundamentais</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat2">
+                <label for="mat2">Frações, decimais e porcentagem</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat3">
+                <label for="mat3">Regra de três simples e composta</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat4">
+                <label for="mat4">Razão e proporção</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat5">
+                <label for="mat5">Juros simples e descontos</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat6">
+                <label for="mat6">Medidas (tempo, massa, comprimento, área, volume)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat7">
+                <label for="mat7">Perímetro e área de figuras geométricas</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat8">
+                <label for="mat8">Interpretação de tabelas e gráficos</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat9">
+                <label for="mat9">Noções básicas de estatística (média, moda e mediana)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="mat10">
+                <label for="mat10">Problemas envolvendo raciocínio lógico simples</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌎 CONHECIMENTOS GERAIS / ATUALIDADES</h2>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg1">
+                <label for="cg1">História e geografia do Ceará e do município de Quixadá</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg2">
+                <label for="cg2">Cultura, economia e características regionais</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg3">
+                <label for="cg3">Atualidades nacionais e internacionais (últimos 12 meses)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg4">
+                <label for="cg4">Temas sociais, políticos, ambientais e de cidadania</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg5">
+                <label for="cg5">Programas sociais e políticas públicas recentes</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="cg6">
+                <label for="cg6">Noções de ética e convivência social</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💻 INFORMÁTICA BÁSICA</h2>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(mais comum em nível médio)</p>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf1">
+                <label for="inf1">Noções de hardware e software</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf2">
+                <label for="inf2">Sistemas operacionais (Windows, Linux)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf3">
+                <label for="inf3">Pacote Microsoft Office (Word, Excel, PowerPoint)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf4">
+                <label for="inf4">Internet: navegação, pesquisa, segurança e e-mail</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf5">
+                <label for="inf5">Armazenamento em nuvem</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="inf6">
+                <label for="inf6">Noções de segurança da informação (senhas, antivírus, backups)</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚖️ LEGISLAÇÃO / DIREITO ADMINISTRATIVO BÁSICO</h2>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(mais comum no nível médio)</p>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg1">
+                <label for="leg1">Princípios da Administração Pública (LIMPE)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg2">
+                <label for="leg2">Estrutura da Administração Pública</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg3">
+                <label for="leg3">Poderes e atos administrativos</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg4">
+                <label for="leg4">Direitos e deveres dos servidores públicos</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg5">
+                <label for="leg5">Ética no serviço público</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg6">
+                <label for="leg6">Noções da Constituição Federal (artigos 1º ao 37)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg7">
+                <label for="leg7">Lei de Improbidade Administrativa (Lei nº 8.429/92)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="leg8">
+                <label for="leg8">Noções de licitações e contratos (Lei nº 14.133/21)</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧩 CONHECIMENTOS ESPECÍFICOS</h2>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(dependendo do cargo)</p>
+            <div class="checklist-item">
+                <input type="checkbox" id="ce1">
+                <label for="ce1">Noções básicas da área pretendida</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ce2">
+                <label for="ce2">Atendimento ao público e relações interpessoais</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ce3">
+                <label for="ce3">Segurança no trabalho e primeiros socorros</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ce4">
+                <label for="ce4">Noções de legislação municipal</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ce5">
+                <label for="ce5">Procedimentos administrativos</label>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h2>📑 DICAS GERAIS DE ESTUDO</h2>
+            <ul>
+                <li>Estude Português e Matemática todos os dias (são matérias fixas)</li>
+                <li>Revise as leis e atualidades semanalmente</li>
+                <li>Faça simulados das bancas Consulpam e Patativa (as mais comuns na região)</li>
+                <li>Monte resumos curtos e fichas de memorização</li>
+                <li>Leia notícias locais e nacionais — costumam cair em "Atualidades"</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
